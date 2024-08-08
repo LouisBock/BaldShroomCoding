@@ -1,10 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://dk0otgnkq6jcw"]
+[gd_scene load_steps=4 format=3 uid="uid://dk0otgnkq6jcw"]
 
+[ext_resource type="Texture2D" uid="uid://b7sdara52tkd" path="res://Backgrounds/bg muster.png" id="1_np3f1"]
 [ext_resource type="Texture2D" uid="uid://ci7lah0dkpcnh" path="res://icon.svg" id="1_wgn6i"]
 
 [sub_resource type="TileSet" id="TileSet_dwwjb"]
 
 [node name="Main root" type="Node"]
+
+[node name="bg_Muster" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_np3f1")
+stretch_mode = 1
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_dwwjb")

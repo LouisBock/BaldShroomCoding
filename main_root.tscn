@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://b2mm4qlbhgtd1"]
+[gd_scene load_steps=3 format=3 uid="uid://dk0otgnkq6jcw"]
+
+[ext_resource type="Texture2D" uid="uid://ci7lah0dkpcnh" path="res://icon.svg" id="1_wgn6i"]
 
 [sub_resource type="TileSet" id="TileSet_dwwjb"]
 
@@ -7,3 +9,7 @@
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_dwwjb")
 format = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(435, 362)
+texture = ExtResource("1_wgn6i")

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyth0pkkt6x2g"]
+
+[ext_resource type="Texture2D" uid="uid://dj1do1holgkef" path="res://Sprites/Player/robo char.png" id="1_3gf0l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_63fgp"]
+size = Vector2(22, 28.375)
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_3gf0l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 0.1875)
+shape = SubResource("RectangleShape2D_63fgp")

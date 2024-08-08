@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b7sdara52tkd" path="res://Backgrounds/bg muster.png" id="1_np3f1"]
 [ext_resource type="Texture2D" uid="uid://bleevhkos63ci" path="res://Tilemaps/tileset chrome.png" id="2_3x4l2"]
-[ext_resource type="Texture2D" uid="uid://cfwoholrs4rsc" path="res://Sprites/Player/char.png" id="3_lllo6"]
+[ext_resource type="PackedScene" uid="uid://dyth0pkkt6x2g" path="res://scenes/sc_player.tscn" id="3_et7i2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jxeop"]
 texture = ExtResource("2_3x4l2")
@@ -32,10 +32,6 @@ tile_set = SubResource("TileSet_dwwjb")
 format = 2
 layer_0/tile_data = PackedInt32Array(458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 458762, 0, 0, 458763, 0, 0, 458764, 0, 0, 458765, 0, 0, 458766, 0, 0, 458767, 0, 0, 458768, 0, 0)
 
-[node name="Player" type="CharacterBody2D" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-texture_filter = 1
-texture = ExtResource("3_lllo6")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+[node name="Player" parent="." instance=ExtResource("3_et7i2")]
+position = Vector2(494, 247)
+scale = Vector2(3, 3)

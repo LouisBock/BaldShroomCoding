@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dk0otgnkq6jcw"]
+[gd_scene load_steps=14 format=3 uid="uid://dk0otgnkq6jcw"]
 
 [ext_resource type="Texture2D" uid="uid://b7sdara52tkd" path="res://Backgrounds/bg muster.png" id="1_np3f1"]
 [ext_resource type="Texture2D" uid="uid://bleevhkos63ci" path="res://Tilemaps/tileset chrome.png" id="2_3x4l2"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://btr88cnyiobgt" path="res://glatz glatz.png" id="3_h58v5"]
 [ext_resource type="Texture2D" uid="uid://cwl3qt4sdsl7i" path="res://Sprites/Platforms/platform.png" id="4_51ghk"]
 [ext_resource type="Script" path="res://scripts/Platforms/Platform.gd" id="4_qbr3p"]
+[ext_resource type="PackedScene" uid="uid://e7h8tsfkrykp" path="res://scenes/sc_coll_coin.tscn" id="7_8r8kr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jxeop"]
 texture = ExtResource("2_3x4l2")
@@ -116,6 +117,17 @@ libraries = {
 "": SubResource("AnimationLibrary_83d23")
 }
 
+[node name="Coins root" type="Node" parent="."]
+
+[node name="Coll_Coin" parent="Coins root" instance=ExtResource("7_8r8kr")]
+position = Vector2(225, 191)
+
+[node name="Coll_Coin2" parent="Coins root" instance=ExtResource("7_8r8kr")]
+position = Vector2(460, 101)
+
+[node name="Coll_Coin3" parent="Coins root" instance=ExtResource("7_8r8kr")]
+position = Vector2(625, 198)
+
 [node name="Player Root" type="Node" parent="."]
 
 [node name="Player" parent="Player Root" instance=ExtResource("3_et7i2")]
@@ -126,5 +138,5 @@ scale = Vector2(3, 3)
 position = Vector2(-5.06639e-06, 0)
 scale = Vector2(0.333333, 0.333333)
 position_smoothing_enabled = true
-position_smoothing_speed = 2.0
+position_smoothing_speed = 3.0
 rotation_smoothing_speed = 2.0

@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://dk0otgnkq6jcw"]
 
-[ext_resource type="Texture2D" uid="uid://b7sdara52tkd" path="res://Backgrounds/bg muster.png" id="1_np3f1"]
 [ext_resource type="Texture2D" uid="uid://bleevhkos63ci" path="res://Tilemaps/tileset chrome.png" id="2_3x4l2"]
+[ext_resource type="Texture2D" uid="uid://bpaxrvkwvxq2t" path="res://Sprites/Backgrounds/bg_bricks_01.png" id="2_ho3ba"]
 [ext_resource type="PackedScene" uid="uid://dyth0pkkt6x2g" path="res://scenes/Player Scene/sc_player.tscn" id="3_et7i2"]
 [ext_resource type="Texture2D" uid="uid://btr88cnyiobgt" path="res://glatz glatz.png" id="3_h58v5"]
 [ext_resource type="PackedScene" uid="uid://cu1e4drtgiyuk" path="res://scenes/sc_platform.tscn" id="4_xrk0i"]
@@ -50,7 +50,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_np3f1")
+scale = Vector2(3, 3)
+texture = ExtResource("2_ho3ba")
 stretch_mode = 1
 
 [node name="TileMap" type="TileMap" parent="Scene Objects"]

@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://e7h8tsfkrykp"]
+[gd_scene load_steps=4 format=3 uid="uid://e7h8tsfkrykp"]
 
 [ext_resource type="Texture2D" uid="uid://dxjnblshpkfbn" path="res://Sprites/Collectibles/coin.png" id="1_jaqcy"]
+[ext_resource type="Script" path="res://scenes/sc_coll_coin.gd" id="1_xys7t"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qftl2"]
 radius = 19.0263
 
 [node name="Coll_Coin" type="Area2D"]
+script = ExtResource("1_xys7t")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -15,3 +17,5 @@ texture = ExtResource("1_jaqcy")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("CircleShape2D_qftl2")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

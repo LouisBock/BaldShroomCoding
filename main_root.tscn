@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cu1e4drtgiyuk" path="res://scenes/sc_platform.tscn" id="4_xrk0i"]
 [ext_resource type="Texture2D" uid="uid://xewqtycws854" path="res://Sprites/Platforms/platform up.png" id="5_jwf81"]
 [ext_resource type="PackedScene" uid="uid://e7h8tsfkrykp" path="res://scenes/sc_coll_coin.tscn" id="7_8r8kr"]
-[ext_resource type="Script" path="res://game_manager.gd" id="8_07xqc"]
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="8_07xqc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jxeop"]
 texture = ExtResource("2_3x4l2")
@@ -115,5 +115,18 @@ rotation_smoothing_speed = 2.0
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Panel" type="Panel" parent="UI"]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 266.0
+offset_bottom = 74.0
+
+[node name="ScoreLabel" type="Label" parent="UI/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "Score : 0"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -13,6 +13,7 @@ config_version=5
 config/name="BaldShroomCoding"
 run/main_scene="res://main_root.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
+run/max_fps=60
 config/icon="res://icon.svg"
 
 [autoload]
@@ -57,4 +58,5 @@ dialogic_default_action={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 environment/defaults/default_clear_color=Color(0.121569, 0.054902, 0.223529, 1)

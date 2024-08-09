@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dk0otgnkq6jcw"]
+[gd_scene load_steps=13 format=3 uid="uid://dk0otgnkq6jcw"]
 
 [ext_resource type="Texture2D" uid="uid://b7sdara52tkd" path="res://Backgrounds/bg muster.png" id="1_np3f1"]
 [ext_resource type="Texture2D" uid="uid://bleevhkos63ci" path="res://Tilemaps/tileset chrome.png" id="2_3x4l2"]
@@ -33,6 +33,21 @@ sources/0 = SubResource("TileSetAtlasSource_jxeop")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k18oe"]
 size = Vector2(144, 24)
 
+[sub_resource type="Animation" id="Animation_58670"]
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(400, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_gmxft"]
 resource_name = "move platform anim"
 length = 6.0
@@ -52,6 +67,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_83d23"]
 _data = {
+"RESET": SubResource("Animation_58670"),
 "move platform anim": SubResource("Animation_gmxft")
 }
 
@@ -83,7 +99,7 @@ texture = ExtResource("3_h58v5")
 [node name="Platforms root" type="Node" parent="."]
 
 [node name="Platform" type="AnimatableBody2D" parent="Platforms root"]
-position = Vector2(0, 305)
+position = Vector2(400, 0)
 script = ExtResource("4_qbr3p")
 
 [node name="sp_platform" type="Sprite2D" parent="Platforms root/Platform"]
@@ -109,3 +125,6 @@ scale = Vector2(3, 3)
 [node name="Camera2D" type="Camera2D" parent="Player Root/Player"]
 position = Vector2(-5.06639e-06, 0)
 scale = Vector2(0.333333, 0.333333)
+position_smoothing_enabled = true
+position_smoothing_speed = 2.0
+rotation_smoothing_speed = 2.0

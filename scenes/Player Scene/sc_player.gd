@@ -34,3 +34,5 @@ func _physics_process(delta):
 		sprite_2d.flip_h = true
 	if Input.is_action_just_pressed("move_right"):
 		sprite_2d.flip_h = false
+
+	# To Do: (Case Sensitive) Example in Player

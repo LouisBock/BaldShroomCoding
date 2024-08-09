@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dk0otgnkq6jcw"]
+[gd_scene load_steps=11 format=3 uid="uid://dk0otgnkq6jcw"]
 
 [ext_resource type="Texture2D" uid="uid://b7sdara52tkd" path="res://Backgrounds/bg muster.png" id="1_np3f1"]
 [ext_resource type="Texture2D" uid="uid://bleevhkos63ci" path="res://Tilemaps/tileset chrome.png" id="2_3x4l2"]
 [ext_resource type="PackedScene" uid="uid://dyth0pkkt6x2g" path="res://scenes/Player Scene/sc_player.tscn" id="3_et7i2"]
 [ext_resource type="Texture2D" uid="uid://btr88cnyiobgt" path="res://glatz glatz.png" id="3_h58v5"]
 [ext_resource type="PackedScene" uid="uid://cu1e4drtgiyuk" path="res://scenes/sc_platform.tscn" id="4_xrk0i"]
+[ext_resource type="Texture2D" uid="uid://xewqtycws854" path="res://Sprites/Platforms/platform up.png" id="5_jwf81"]
 [ext_resource type="PackedScene" uid="uid://e7h8tsfkrykp" path="res://scenes/sc_coll_coin.tscn" id="7_8r8kr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jxeop"]
@@ -29,6 +30,9 @@ texture = ExtResource("2_3x4l2")
 [sub_resource type="TileSet" id="TileSet_dwwjb"]
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_jxeop")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u151i"]
+size = Vector2(16, 4)
 
 [node name="Main Root" type="Node"]
 
@@ -55,21 +59,38 @@ position = Vector2(1103, 280)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("3_h58v5")
 
-[node name="Platforms root" type="Node" parent="."]
+[node name="Platforms move node" type="Node" parent="."]
 
-[node name="Moveing Platform" parent="Platforms root" instance=ExtResource("4_xrk0i")]
+[node name="Moveing Platform" parent="Platforms move node" instance=ExtResource("4_xrk0i")]
 position = Vector2(59, 304)
 
-[node name="Coins root" type="Node" parent="."]
+[node name="Moveing Platform 2" parent="Platforms move node" instance=ExtResource("4_xrk0i")]
+position = Vector2(766, 124)
 
-[node name="Coll_Coin" parent="Coins root" instance=ExtResource("7_8r8kr")]
+[node name="Platform up root" type="Node" parent="."]
+
+[node name="sp_platform up" type="Sprite2D" parent="Platform up root"]
+position = Vector2(689, 235)
+scale = Vector2(20, 4)
+texture = ExtResource("5_jwf81")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Platform up root/sp_platform up"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform up root/sp_platform up/StaticBody2D"]
+visible = false
+shape = SubResource("RectangleShape2D_u151i")
+one_way_collision = true
+
+[node name="Coins node" type="Node" parent="."]
+
+[node name="Coll_Coin" parent="Coins node" instance=ExtResource("7_8r8kr")]
 position = Vector2(225, 191)
 
-[node name="Coll_Coin2" parent="Coins root" instance=ExtResource("7_8r8kr")]
+[node name="Coll_Coin2" parent="Coins node" instance=ExtResource("7_8r8kr")]
 position = Vector2(460, 101)
 
-[node name="Coll_Coin3" parent="Coins root" instance=ExtResource("7_8r8kr")]
-position = Vector2(625, 198)
+[node name="Coll_Coin3" parent="Coins node" instance=ExtResource("7_8r8kr")]
+position = Vector2(629, 158)
 
 [node name="Player Root" type="Node" parent="."]
 
@@ -83,6 +104,3 @@ scale = Vector2(0.333333, 0.333333)
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0
 rotation_smoothing_speed = 2.0
-
-[node name="Moveing Platform" parent="." instance=ExtResource("4_xrk0i")]
-position = Vector2(766, 124)

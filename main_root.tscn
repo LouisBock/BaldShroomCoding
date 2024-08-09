@@ -1,11 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://dk0otgnkq6jcw"]
+[gd_scene load_steps=9 format=3 uid="uid://dk0otgnkq6jcw"]
 
 [ext_resource type="Texture2D" uid="uid://b7sdara52tkd" path="res://Backgrounds/bg muster.png" id="1_np3f1"]
 [ext_resource type="Texture2D" uid="uid://bleevhkos63ci" path="res://Tilemaps/tileset chrome.png" id="2_3x4l2"]
 [ext_resource type="PackedScene" uid="uid://dyth0pkkt6x2g" path="res://scenes/Player Scene/sc_player.tscn" id="3_et7i2"]
 [ext_resource type="Texture2D" uid="uid://btr88cnyiobgt" path="res://glatz glatz.png" id="3_h58v5"]
-[ext_resource type="Texture2D" uid="uid://cwl3qt4sdsl7i" path="res://Sprites/Platforms/platform.png" id="4_51ghk"]
-[ext_resource type="Script" path="res://scripts/Platforms/Platform.gd" id="4_qbr3p"]
+[ext_resource type="PackedScene" uid="uid://cu1e4drtgiyuk" path="res://scenes/sc_platform.tscn" id="4_xrk0i"]
 [ext_resource type="PackedScene" uid="uid://e7h8tsfkrykp" path="res://scenes/sc_coll_coin.tscn" id="7_8r8kr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jxeop"]
@@ -30,47 +29,6 @@ texture = ExtResource("2_3x4l2")
 [sub_resource type="TileSet" id="TileSet_dwwjb"]
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_jxeop")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_k18oe"]
-size = Vector2(144, 24)
-
-[sub_resource type="Animation" id="Animation_58670"]
-length = 6.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(400, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_gmxft"]
-resource_name = "move platform anim"
-length = 6.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 3, 6),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 305), Vector2(300, 305), Vector2(0, 305)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_83d23"]
-_data = {
-"RESET": SubResource("Animation_58670"),
-"move platform anim": SubResource("Animation_gmxft")
-}
 
 [node name="Main Root" type="Node"]
 
@@ -99,23 +57,8 @@ texture = ExtResource("3_h58v5")
 
 [node name="Platforms root" type="Node" parent="."]
 
-[node name="Platform" type="AnimatableBody2D" parent="Platforms root"]
-position = Vector2(400, 0)
-script = ExtResource("4_qbr3p")
-
-[node name="sp_platform" type="Sprite2D" parent="Platforms root/Platform"]
-texture_filter = 1
-scale = Vector2(3, 3)
-texture = ExtResource("4_51ghk")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms root/Platform"]
-visible = false
-shape = SubResource("RectangleShape2D_k18oe")
-
-[node name="anim_platform" type="AnimationPlayer" parent="Platforms root/Platform"]
-libraries = {
-"": SubResource("AnimationLibrary_83d23")
-}
+[node name="Moveing Platform" parent="Platforms root" instance=ExtResource("4_xrk0i")]
+position = Vector2(59, 304)
 
 [node name="Coins root" type="Node" parent="."]
 
@@ -140,3 +83,6 @@ scale = Vector2(0.333333, 0.333333)
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0
 rotation_smoothing_speed = 2.0
+
+[node name="Moveing Platform" parent="." instance=ExtResource("4_xrk0i")]
+position = Vector2(766, 124)

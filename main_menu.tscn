@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://chnpc6hbsm7wl"]
+[gd_scene load_steps=5 format=3 uid="uid://chnpc6hbsm7wl"]
+
+[ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_repcp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q14sw"]
 bg_color = Color(0.298989, 0.191469, 0.527052, 1)
@@ -26,6 +28,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_repcp")
 
 [node name="bt_start game" type="Button" parent="."]
 layout_mode = 1
@@ -114,3 +117,7 @@ theme_override_font_sizes/font_size = 60
 text = "Bald Shroom Coding"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="bt_start game" to="." method="_on_bt_start_game_pressed"]
+[connection signal="pressed" from="bt_options" to="." method="_on_bt_options_pressed"]
+[connection signal="pressed" from="bt_Exit game" to="." method="_on_bt_exit_game_pressed"]

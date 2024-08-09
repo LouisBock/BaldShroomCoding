@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dk0otgnkq6jcw"]
+[gd_scene load_steps=19 format=3 uid="uid://dk0otgnkq6jcw"]
 
 [ext_resource type="Texture2D" uid="uid://bleevhkos63ci" path="res://Tilemaps/tileset chrome.png" id="2_3x4l2"]
 [ext_resource type="Texture2D" uid="uid://bpaxrvkwvxq2t" path="res://Sprites/Backgrounds/bg_bricks_01.png" id="2_ho3ba"]
@@ -66,6 +66,30 @@ corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yrgeb"]
+bg_color = Color(0.388366, 0.352963, 0.666096, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.819608, 0.784314, 0.843137, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_citjg"]
+bg_color = Color(0.977937, 0.977937, 0.977937, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.80518, 0.84766, 0.94956, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
 [node name="Main Root" type="Node"]
 
@@ -160,13 +184,13 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 60.0
+offset_left = 55.0
 offset_top = -17.0
-offset_right = 166.0
+offset_right = 161.0
 offset_bottom = 18.0
 grow_vertical = 2
 theme_override_font_sizes/font_size = 25
-text = "Coins : 0"
+text = "Coins: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -239,3 +263,10 @@ offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(1, 0.9)
+theme_override_colors/font_color = Color(0.85066, 0.851281, 0.944075, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 17
+theme_override_styles/background = SubResource("StyleBoxFlat_yrgeb")
+theme_override_styles/fill = SubResource("StyleBoxFlat_citjg")
+value = 25.0

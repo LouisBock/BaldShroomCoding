@@ -1,18 +1,63 @@
-[gd_scene load_steps=4 format=3 uid="uid://e7h8tsfkrykp"]
+[gd_scene load_steps=10 format=3 uid="uid://e7h8tsfkrykp"]
 
-[ext_resource type="Texture2D" uid="uid://dxjnblshpkfbn" path="res://Sprites/Collectibles/coin.png" id="1_jaqcy"]
 [ext_resource type="Script" path="res://scenes/sc_coll_coin.gd" id="1_xys7t"]
+[ext_resource type="Texture2D" uid="uid://2uqv71naiolq" path="res://Sprites/Animations/shroomcoin-Sheet.png" id="2_0xnwp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60jr4"]
+atlas = ExtResource("2_0xnwp")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1qxio"]
+atlas = ExtResource("2_0xnwp")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8a7lp"]
+atlas = ExtResource("2_0xnwp")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wlncx"]
+atlas = ExtResource("2_0xnwp")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_huv1q"]
+atlas = ExtResource("2_0xnwp")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nm0eu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60jr4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1qxio")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8a7lp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wlncx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_huv1q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qftl2"]
-radius = 19.0263
+radius = 22.0227
 
 [node name="Coll_Coin" type="Area2D"]
 script = ExtResource("1_xys7t")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Animated Sprite 2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(3, 3)
-texture = ExtResource("1_jaqcy")
+sprite_frames = SubResource("SpriteFrames_nm0eu")
+autoplay = "default"
+frame_progress = 0.167814
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

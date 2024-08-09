@@ -14,7 +14,7 @@ config/name="BaldShroomCoding"
 run/main_scene="res://main_root.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 run/max_fps=60
-config/icon="res://icon.svg"
+config/icon="res://Sprites/Icons/baldshroom.svg"
 
 [autoload]
 

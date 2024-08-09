@@ -45,12 +45,14 @@ position = Vector2(1, 0)
 scale = Vector2(3, 3)
 tile_set = SubResource("TileSet_dwwjb")
 format = 2
-layer_0/tile_data = PackedInt32Array(458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 458762, 0, 0, 458763, 0, 0, 458764, 0, 0, 458765, 0, 0, 458766, 0, 0, 458767, 0, 0, 458768, 0, 0)
+layer_0/tile_data = PackedInt32Array(458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 458762, 0, 0, 458763, 0, 0, 458764, 0, 0, 458765, 0, 0, 458766, 0, 0, 458767, 0, 0, 458768, 0, 0, 524305, 0, 0, 524306, 0, 0, 524307, 0, 0, 524308, 0, 0, 524309, 0, 0, 524310, 0, 0, 524311, 0, 0, 524312, 0, 0, 524313, 0, 0, 524314, 0, 0, 524315, 0, 0, 524316, 0, 0, 524317, 0, 0, 524318, 0, 0)
 
-[node name="Player" parent="." instance=ExtResource("3_et7i2")]
+[node name="Player Root" type="Node" parent="."]
+
+[node name="Player" parent="Player Root" instance=ExtResource("3_et7i2")]
 position = Vector2(494, 247)
 scale = Vector2(3, 3)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Camera2D" type="Camera2D" parent="Player Root/Player"]
 position = Vector2(-5.06639e-06, 0)
 scale = Vector2(0.333333, 0.333333)

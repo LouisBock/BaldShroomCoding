@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+const SPEED = 400.0
+const JUMP_VELOCITY = -330.0
 @onready var sprite_2d = $Sprite2D #Drag n Drop + Ctrl from scene tree
 
 
@@ -20,8 +20,8 @@ func _physics_process(delta):
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis("move_left", "move_right") #Define Input Maps in project settings
+	# Define Input Maps in project settings
+	var direction = Input.get_axis("move_left", "move_right")
 	if direction:
 		velocity.x = direction * SPEED
 	else:
@@ -30,5 +30,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 	# Inverts sprite
-	var isLeft = velocity.x < 0 
-	sprite_2d.flip_h = isLeft
+	if Input.is_action_just_pressed("move_left"):
+		sprite_2d.flip_h = true
+	if Input.is_action_just_pressed("move_right"):
+		sprite_2d.flip_h = false

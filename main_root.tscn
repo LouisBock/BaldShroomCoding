@@ -73,7 +73,7 @@ texture = ExtResource("3_h58v5")
 position = Vector2(59, 304)
 
 [node name="Moveing Platform 2" parent="Scene Objects/Platforms move node" instance=ExtResource("4_xrk0i")]
-position = Vector2(766, 124)
+position = Vector2(776, 124)
 
 [node name="Platform up node" type="Node" parent="Scene Objects"]
 

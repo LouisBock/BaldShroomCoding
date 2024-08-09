@@ -29,7 +29,7 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-	# Inverts sprite
+	# Sprite Inversion
 	if Input.is_action_just_pressed("move_left"):
 		sprite_2d.flip_h = true
 	if Input.is_action_just_pressed("move_right"):

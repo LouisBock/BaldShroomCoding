@@ -29,7 +29,8 @@ sources/0 = SubResource("TileSetAtlasSource_jxeop")
 
 [node name="Main root" type="Node"]
 
-[node name="bg_Muster" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
+texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -49,3 +50,7 @@ layer_0/tile_data = PackedInt32Array(458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 4
 [node name="Player" parent="." instance=ExtResource("3_et7i2")]
 position = Vector2(494, 247)
 scale = Vector2(3, 3)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(-5.06639e-06, 0)
+scale = Vector2(0.333333, 0.333333)

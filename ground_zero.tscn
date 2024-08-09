@@ -1,0 +1,130 @@
+[gd_scene load_steps=12 format=3 uid="uid://bfhsisip1en7v"]
+
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_dreor"]
+[ext_resource type="Texture2D" uid="uid://bpaxrvkwvxq2t" path="res://Sprites/Backgrounds/bg_bricks_01.png" id="2_5de8x"]
+[ext_resource type="Texture2D" uid="uid://bleevhkos63ci" path="res://Tilemaps/tileset chrome.png" id="3_ub1qp"]
+[ext_resource type="PackedScene" uid="uid://dyth0pkkt6x2g" path="res://scenes/Player Scene/sc_player.tscn" id="4_abgw1"]
+[ext_resource type="Texture2D" uid="uid://btr88cnyiobgt" path="res://glatz glatz.png" id="4_h1k3m"]
+[ext_resource type="PackedScene" uid="uid://cu1e4drtgiyuk" path="res://scenes/sc_platform.tscn" id="5_rcjqx"]
+[ext_resource type="Texture2D" uid="uid://xewqtycws854" path="res://Sprites/Platforms/platform up.png" id="6_vxc82"]
+[ext_resource type="PackedScene" uid="uid://e7h8tsfkrykp" path="res://scenes/sc_coll_coin.tscn" id="7_qjplq"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jxeop"]
+texture = ExtResource("3_ub1qp")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_dwwjb"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_jxeop")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u151i"]
+size = Vector2(16, 4)
+
+[node name="Main Root" type="Node"]
+
+[node name="Game Manager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_dreor")
+
+[node name="Scene Objects" type="Node" parent="."]
+
+[node name="Background" type="TextureRect" parent="Scene Objects"]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+texture = ExtResource("2_5de8x")
+stretch_mode = 1
+
+[node name="TileMap" type="TileMap" parent="Scene Objects"]
+texture_filter = 1
+position = Vector2(1, 0)
+scale = Vector2(3, 3)
+tile_set = SubResource("TileSet_dwwjb")
+format = 2
+layer_0/tile_data = PackedInt32Array(458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 458762, 0, 0, 458763, 0, 0, 458764, 0, 0, 458765, 0, 0, 458766, 0, 0, 458767, 0, 0, 458768, 0, 0, 524305, 0, 0, 524306, 0, 0, 524307, 0, 0, 524308, 0, 0, 524309, 0, 0, 524310, 0, 0, 524311, 0, 0, 524312, 0, 0, 524313, 0, 0, 524314, 0, 0, 524315, 0, 0, 524316, 0, 0, 524317, 0, 0, 524318, 0, 0)
+
+[node name="Glaaaaatz" type="Sprite2D" parent="Scene Objects"]
+position = Vector2(1103, 280)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_h1k3m")
+
+[node name="Platforms move node" type="Node" parent="Scene Objects"]
+
+[node name="Moveing Platform" parent="Scene Objects/Platforms move node" instance=ExtResource("5_rcjqx")]
+position = Vector2(59, 304)
+
+[node name="Moveing Platform 2" parent="Scene Objects/Platforms move node" instance=ExtResource("5_rcjqx")]
+position = Vector2(776, 124)
+
+[node name="Platform up node" type="Node" parent="Scene Objects"]
+
+[node name="sp_platform up" type="Sprite2D" parent="Scene Objects/Platform up node"]
+position = Vector2(689, 235)
+scale = Vector2(20, 4)
+texture = ExtResource("6_vxc82")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Scene Objects/Platform up node/sp_platform up"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scene Objects/Platform up node/sp_platform up/StaticBody2D"]
+visible = false
+shape = SubResource("RectangleShape2D_u151i")
+one_way_collision = true
+
+[node name="Coins node" type="Node" parent="Scene Objects"]
+
+[node name="Coll_Coin" parent="Scene Objects/Coins node" instance=ExtResource("7_qjplq")]
+position = Vector2(225, 191)
+
+[node name="Coll_Coin2" parent="Scene Objects/Coins node" instance=ExtResource("7_qjplq")]
+position = Vector2(460, 101)
+
+[node name="Player Root" type="Node" parent="Scene Objects"]
+
+[node name="Player" parent="Scene Objects/Player Root" instance=ExtResource("4_abgw1")]
+position = Vector2(494, 247)
+scale = Vector2(3, 3)
+
+[node name="Camera2D" type="Camera2D" parent="Scene Objects/Player Root/Player"]
+position = Vector2(-5.06639e-06, 0)
+scale = Vector2(0.333333, 0.333333)
+position_smoothing_enabled = true
+position_smoothing_speed = 3.0
+rotation_smoothing_speed = 2.0
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="UI"]
+offset_right = 266.0
+offset_bottom = 74.0
+
+[node name="ScoreLabel" type="Label" parent="UI/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "Score : 0"
+horizontal_alignment = 1
+vertical_alignment = 1

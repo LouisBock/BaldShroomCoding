@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dk0otgnkq6jcw"]
+[gd_scene load_steps=24 format=3 uid="uid://dk0otgnkq6jcw"]
 
 [ext_resource type="Texture2D" uid="uid://bleevhkos63ci" path="res://Tilemaps/tileset chrome.png" id="2_3x4l2"]
 [ext_resource type="Texture2D" uid="uid://bpaxrvkwvxq2t" path="res://Sprites/Backgrounds/bg_bricks_01.png" id="2_ho3ba"]
@@ -10,6 +10,8 @@
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="8_07xqc"]
 [ext_resource type="Texture2D" uid="uid://c5s5w1mdgg4ix" path="res://Sprites/Collectibles/shroomcoin.png" id="9_em4cv"]
 [ext_resource type="Texture2D" uid="uid://bmxw74cdaklk3" path="res://Sprites/Avatars/pepe dance.png" id="9_fohv1"]
+[ext_resource type="Script" path="res://Character Stats.gd" id="11_kadh6"]
+[ext_resource type="PackedScene" uid="uid://cif68w02k5umb" path="res://scenes/sc_Experience.tscn" id="12_4nigt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jxeop"]
 texture = ExtResource("2_3x4l2")
@@ -90,6 +92,25 @@ corner_radius_top_left = 6
 corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_us8uv"]
+bg_color = Color(0.298989, 0.191469, 0.527052, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cgfwh"]
+bg_color = Color(0.298039, 0.192157, 0.52549, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0.821789, 0.821789, 0.821789, 0.6)
+shadow_size = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7awuo"]
+bg_color = Color(0.298039, 0.192157, 0.52549, 1)
 
 [node name="Main Root" type="Node"]
 
@@ -270,3 +291,47 @@ theme_override_font_sizes/font_size = 17
 theme_override_styles/background = SubResource("StyleBoxFlat_yrgeb")
 theme_override_styles/fill = SubResource("StyleBoxFlat_citjg")
 value = 25.0
+
+[node name="XPSYSGroup" type="Node" parent="."]
+
+[node name="Character Stats" type="Node" parent="XPSYSGroup"]
+script = ExtResource("11_kadh6")
+
+[node name="Interface" type="Control" parent="XPSYSGroup"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="XPSYSGroup/Interface"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="UpgradeHealth" type="Button" parent="XPSYSGroup/Interface"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1178.0
+offset_top = 16.0
+offset_right = 1476.0
+offset_bottom = 97.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.808998, 0.808998, 0.808998, 1)
+theme_override_colors/font_hover_color = Color(0.991164, 0.991164, 0.991164, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_us8uv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cgfwh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7awuo")
+text = "Upgrade Health"
+
+[node name="ExperienceOrb" parent="." instance=ExtResource("12_4nigt")]
+position = Vector2(49, 243)
+
+[connection signal="pressed" from="XPSYSGroup/Interface/UpgradeHealth" to="XPSYSGroup/Character Stats" method="_on_upgrade_health_pressed"]

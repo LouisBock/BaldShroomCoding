@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://cif68w02k5umb"]
+
+[ext_resource type="Script" path="res://scenes/sc_Experience.gd" id="1_303e3"]
+[ext_resource type="Texture2D" uid="uid://djuyo1o3nvnyc" path="res://Sprites/Animations/xp_animation.png" id="1_a5bei"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1dd8t"]
+atlas = ExtResource("1_a5bei")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mhktf"]
+atlas = ExtResource("1_a5bei")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ausrt"]
+atlas = ExtResource("1_a5bei")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qp6jb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1dd8t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mhktf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ausrt")
+}],
+"loop": true,
+"name": &"xp_anim",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_64kce"]
+radius = 5.0
+
+[node name="ExperienceOrb" type="Area2D"]
+script = ExtResource("1_303e3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qp6jb")
+animation = &"xp_anim"
+autoplay = "xp_anim"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_64kce")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

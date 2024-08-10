@@ -1,9 +1,7 @@
 extends Node
+# Game Manager for Scene Management
 
-@onready var score_label = %ScoreLabel
-
-var score = 0
-
-func add_points():
-	score += 1
-	score_label.text = "Coins: " + str(score)
+# Switch to Stat Upgrade UI - Shift + U
+func _physics_process(delta):
+	if Input.is_action_just_pressed("UI"):
+		get_tree().change_scene_to_file("res://scenes/stat_interface.tscn")

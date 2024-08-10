@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://yu15wu2ee0kv"]
+
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="1_4x8ps"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="2_e1q50"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_oa07u"]
+normal = Vector2(1, 0)
+
+[sub_resource type="Resource" id="Resource_okf87"]
+script = ExtResource("2_e1q50")
+duration = 1.0
+transition = 0
+ease = 2
+
+[node name="action_sequence_death_camera" type="Node2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("WorldBoundaryShape2D_oa07u")
+
+[node name="PhantomCamera2D" type="Node2D" parent="RigidBody2D"]
+position = Vector2(576, 324)
+script = ExtResource("1_4x8ps")
+tween_resource = SubResource("Resource_okf87")

@@ -42,3 +42,4 @@ position = Vector2(194, 240)
 scale = Vector2(3, 3)
 
 [node name="action_sequence_death_camera" parent="." instance=ExtResource("3_6opub")]
+position = Vector2(-1.52588e-05, 0)

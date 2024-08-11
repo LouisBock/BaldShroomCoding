@@ -1,6 +1,8 @@
 extends Node
 # Game Manager for Scene Management
 
+# Options Menu
+
 # Switch to Stat Upgrade UI - Shift + U
 func _physics_process(delta):
 	if Input.is_action_just_pressed("UI"):

@@ -370,4 +370,5 @@ script = ExtResource("14_cgk0v")
 script = ExtResource("14_pqlya")
 
 [node name="ScCompanion" parent="." instance=ExtResource("18_nl0o3")]
+modulate = Color(1, 2, 1.5, 1)
 position = Vector2(439, 200)

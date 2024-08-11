@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dk0otgnkq6jcw"]
+[gd_scene load_steps=25 format=3 uid="uid://dk0otgnkq6jcw"]
 
 [ext_resource type="Texture2D" uid="uid://bleevhkos63ci" path="res://Tilemaps/tileset chrome.png" id="2_3x4l2"]
 [ext_resource type="Texture2D" uid="uid://bpaxrvkwvxq2t" path="res://Sprites/Backgrounds/bg_bricks_01.png" id="2_ho3ba"]
@@ -15,6 +15,15 @@
 [ext_resource type="Script" path="res://Coin Score.gd" id="12_uqt2y"]
 [ext_resource type="Script" path="res://scripts/SignalTestParent.gd" id="14_cgk0v"]
 [ext_resource type="Script" path="res://scripts/SignalTestChild.gd" id="14_pqlya"]
+
+[sub_resource type="Environment" id="Environment_kdfy4"]
+background_mode = 3
+glow_normalized = true
+glow_intensity = 1.55
+glow_strength = 1.39
+glow_blend_mode = 1
+glow_hdr_threshold = 0.5
+glow_hdr_scale = 1.65
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jxeop"]
 texture = ExtResource("2_3x4l2")
@@ -97,6 +106,9 @@ corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 
 [node name="Main Root" type="Node"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_kdfy4")
 
 [node name="Game Manager" type="Node" parent="."]
 script = ExtResource("8_07xqc")

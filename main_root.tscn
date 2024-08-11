@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dk0otgnkq6jcw"]
+[gd_scene load_steps=24 format=3 uid="uid://dk0otgnkq6jcw"]
 
 [ext_resource type="Texture2D" uid="uid://bleevhkos63ci" path="res://Tilemaps/tileset chrome.png" id="2_3x4l2"]
 [ext_resource type="Texture2D" uid="uid://bpaxrvkwvxq2t" path="res://Sprites/Backgrounds/bg_bricks_01.png" id="2_ho3ba"]
@@ -13,6 +13,8 @@
 [ext_resource type="Script" path="res://Character Stats.gd" id="11_kadh6"]
 [ext_resource type="PackedScene" uid="uid://cif68w02k5umb" path="res://scenes/sc_Experience.tscn" id="12_4nigt"]
 [ext_resource type="Script" path="res://Coin Score.gd" id="12_uqt2y"]
+[ext_resource type="Script" path="res://scripts/SignalTestParent.gd" id="14_cgk0v"]
+[ext_resource type="Script" path="res://scripts/SignalTestChild.gd" id="14_pqlya"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jxeop"]
 texture = ExtResource("2_3x4l2")
@@ -278,3 +280,9 @@ value = 25.0
 
 [node name="TEST_ExperienceOrb" parent="." instance=ExtResource("12_4nigt")]
 position = Vector2(49, 243)
+
+[node name="SignalTestParent" type="Node2D" parent="."]
+script = ExtResource("14_cgk0v")
+
+[node name="SignalTestChild" type="Node2D" parent="SignalTestParent"]
+script = ExtResource("14_pqlya")

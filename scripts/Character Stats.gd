@@ -8,3 +8,7 @@ extends Node
 
 func HealthUp():
 	max_health += 10
+
+func add_experience():
+	experience += 10
+	print("Experience: " + str(experience))

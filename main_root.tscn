@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dk0otgnkq6jcw"]
+[gd_scene load_steps=33 format=3 uid="uid://dk0otgnkq6jcw"]
 
 [ext_resource type="Texture2D" uid="uid://bleevhkos63ci" path="res://Tilemaps/tileset chrome.png" id="2_3x4l2"]
 [ext_resource type="Texture2D" uid="uid://bpaxrvkwvxq2t" path="res://Sprites/Backgrounds/bg_bricks_01.png" id="2_ho3ba"]
@@ -10,13 +10,14 @@
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="8_07xqc"]
 [ext_resource type="Texture2D" uid="uid://c5s5w1mdgg4ix" path="res://Sprites/Collectibles/shroomcoin.png" id="9_em4cv"]
 [ext_resource type="Texture2D" uid="uid://bmxw74cdaklk3" path="res://Sprites/Avatars/pepe dance.png" id="9_fohv1"]
-[ext_resource type="Script" path="res://Character Stats.gd" id="11_kadh6"]
+[ext_resource type="Script" path="res://scripts/Character Stats.gd" id="11_kadh6"]
 [ext_resource type="PackedScene" uid="uid://cif68w02k5umb" path="res://scenes/sc_Experience.tscn" id="12_4nigt"]
 [ext_resource type="FontFile" uid="uid://bfak45on8aoum" path="res://Fonts/slkscr.ttf" id="12_217vb"]
-[ext_resource type="Script" path="res://Coin Score.gd" id="12_uqt2y"]
+[ext_resource type="Script" path="res://scripts/Coin Score.gd" id="12_uqt2y"]
 [ext_resource type="Script" path="res://scripts/SignalTestParent.gd" id="14_cgk0v"]
 [ext_resource type="Script" path="res://scripts/SignalTestChild.gd" id="14_pqlya"]
 [ext_resource type="Texture2D" uid="uid://ddh48y5oe2koq" path="res://Sprites/Animations/lantern_animation.png" id="16_vvhxk"]
+[ext_resource type="PackedScene" uid="uid://cvrnkaygnsxa8" path="res://scenes/sc_companion.tscn" id="18_nl0o3"]
 
 [sub_resource type="Environment" id="Environment_o85e3"]
 background_mode = 3
@@ -153,6 +154,7 @@ script = ExtResource("8_07xqc")
 [node name="Stats" type="Node" parent="."]
 
 [node name="Character Stats" type="Node" parent="Stats"]
+unique_name_in_owner = true
 script = ExtResource("11_kadh6")
 
 [node name="Coin Score" type="Node" parent="Stats"]
@@ -366,3 +368,6 @@ script = ExtResource("14_cgk0v")
 
 [node name="SignalTestChild" type="Node2D" parent="SignalTestParent"]
 script = ExtResource("14_pqlya")
+
+[node name="ScCompanion" parent="." instance=ExtResource("18_nl0o3")]
+position = Vector2(439, 200)

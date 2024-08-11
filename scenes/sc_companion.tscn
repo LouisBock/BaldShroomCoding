@@ -40,4 +40,5 @@ script = ExtResource("1_antwj")
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_5yiyl")
 autoplay = "default"
-frame_progress = 0.283773
+frame = 2
+frame_progress = 0.131577

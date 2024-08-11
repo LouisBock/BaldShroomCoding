@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dk0otgnkq6jcw"]
+[gd_scene load_steps=31 format=3 uid="uid://dk0otgnkq6jcw"]
 
 [ext_resource type="Texture2D" uid="uid://bleevhkos63ci" path="res://Tilemaps/tileset chrome.png" id="2_3x4l2"]
 [ext_resource type="Texture2D" uid="uid://bpaxrvkwvxq2t" path="res://Sprites/Backgrounds/bg_bricks_01.png" id="2_ho3ba"]
@@ -15,15 +15,14 @@
 [ext_resource type="Script" path="res://Coin Score.gd" id="12_uqt2y"]
 [ext_resource type="Script" path="res://scripts/SignalTestParent.gd" id="14_cgk0v"]
 [ext_resource type="Script" path="res://scripts/SignalTestChild.gd" id="14_pqlya"]
+[ext_resource type="Texture2D" uid="uid://ddh48y5oe2koq" path="res://Sprites/Animations/lantern_animation.png" id="16_vvhxk"]
 
-[sub_resource type="Environment" id="Environment_kdfy4"]
+[sub_resource type="Environment" id="Environment_o85e3"]
 background_mode = 3
-glow_normalized = true
-glow_intensity = 1.55
-glow_strength = 1.39
+background_canvas_max_layer = 2
+glow_enabled = true
+glow_intensity = 1.65
 glow_blend_mode = 1
-glow_hdr_threshold = 0.5
-glow_hdr_scale = 1.65
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jxeop"]
 texture = ExtResource("2_3x4l2")
@@ -47,6 +46,42 @@ texture = ExtResource("2_3x4l2")
 [sub_resource type="TileSet" id="TileSet_dwwjb"]
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_jxeop")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f67cw"]
+atlas = ExtResource("16_vvhxk")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tnff2"]
+atlas = ExtResource("16_vvhxk")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3aks0"]
+atlas = ExtResource("16_vvhxk")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s848t"]
+atlas = ExtResource("16_vvhxk")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j0dyr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f67cw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tnff2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3aks0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s848t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u151i"]
 size = Vector2(16, 4)
@@ -108,7 +143,7 @@ corner_radius_bottom_left = 6
 [node name="Main Root" type="Node"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_kdfy4")
+environment = SubResource("Environment_o85e3")
 
 [node name="Game Manager" type="Node" parent="."]
 script = ExtResource("8_07xqc")
@@ -134,6 +169,7 @@ grow_vertical = 2
 scale = Vector2(3, 3)
 texture = ExtResource("2_ho3ba")
 stretch_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="TileMap" type="TileMap" parent="Scene Objects"]
 texture_filter = 1
@@ -147,6 +183,13 @@ layer_0/tile_data = PackedInt32Array(458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 4
 position = Vector2(1103, 280)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("3_h58v5")
+
+[node name="Lantern" type="AnimatedSprite2D" parent="Scene Objects"]
+self_modulate = Color(2, 2, 2, 1)
+position = Vector2(670, 49)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_j0dyr")
+autoplay = "default"
 
 [node name="Platforms move node" type="Node" parent="Scene Objects"]
 
@@ -188,16 +231,17 @@ position_smoothing_enabled = true
 position_smoothing_speed = 3.0
 rotation_smoothing_speed = 2.0
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="Scene Objects"]
 
-[node name="Panel" type="Panel" parent="UI"]
+[node name="Panel" type="Panel" parent="Scene Objects/UI"]
 offset_left = 251.0
 offset_right = 500.0
 offset_bottom = 47.0
 scale = Vector2(0.95, 0.95)
 theme_override_styles/panel = SubResource("StyleBoxFlat_mmked")
+metadata/_edit_use_anchors_ = true
 
-[node name="ScoreLabel" type="Label" parent="UI/Panel"]
+[node name="ScoreLabel" type="Label" parent="Scene Objects/UI/Panel"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 4
@@ -213,7 +257,7 @@ text = "Coins: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="UI/Panel"]
+[node name="TextureRect" type="TextureRect" parent="Scene Objects/UI/Panel"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -225,12 +269,13 @@ offset_bottom = 20.368
 grow_vertical = 2
 texture = ExtResource("9_em4cv")
 
-[node name="PlayerInfoBox" type="Panel" parent="UI"]
+[node name="PlayerInfoBox" type="Panel" parent="Scene Objects/UI"]
 offset_right = 250.0
 offset_bottom = 75.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_17qfi")
+metadata/_edit_use_anchors_ = true
 
-[node name="AvatarFrame" type="Panel" parent="UI/PlayerInfoBox"]
+[node name="AvatarFrame" type="Panel" parent="Scene Objects/UI/PlayerInfoBox"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -242,7 +287,7 @@ offset_bottom = 27.5
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_iobcf")
 
-[node name="Avatar" type="TextureRect" parent="UI/PlayerInfoBox/AvatarFrame"]
+[node name="Avatar" type="TextureRect" parent="Scene Objects/UI/PlayerInfoBox/AvatarFrame"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -258,7 +303,7 @@ grow_vertical = 2
 texture = ExtResource("9_fohv1")
 expand_mode = 1
 
-[node name="Username" type="Label" parent="UI/PlayerInfoBox"]
+[node name="Username" type="Label" parent="Scene Objects/UI/PlayerInfoBox"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 75.0
@@ -269,7 +314,7 @@ scale = Vector2(0.95, 0.95)
 theme_override_font_sizes/font_size = 25
 text = "Geldnascher"
 
-[node name="ProgressBar" type="ProgressBar" parent="UI/PlayerInfoBox"]
+[node name="ProgressBar" type="ProgressBar" parent="Scene Objects/UI/PlayerInfoBox"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0

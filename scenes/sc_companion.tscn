@@ -18,10 +18,10 @@ region = Rect2(32, 0, 16, 16)
 [sub_resource type="SpriteFrames" id="SpriteFrames_5yiyl"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 1.5,
 "texture": SubResource("AtlasTexture_q2eqr")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_2qyhh")
 }, {
 "duration": 1.0,
@@ -29,7 +29,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [node name="Node2D" type="Node2D"]
@@ -39,4 +39,4 @@ script = ExtResource("1_antwj")
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_5yiyl")
 autoplay = "default"
-frame_progress = 0.637101
+frame_progress = 0.283773

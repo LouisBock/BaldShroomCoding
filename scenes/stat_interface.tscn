@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dslvdqsm3xlu7"]
+[gd_scene load_steps=6 format=3 uid="uid://dslvdqsm3xlu7"]
 
 [ext_resource type="Script" path="res://scenes/stat_interface.gd" id="1_ona0j"]
+[ext_resource type="FontFile" uid="uid://bfak45on8aoum" path="res://Fonts/slkscr.ttf" id="2_untlf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_us8uv"]
 bg_color = Color(0.298989, 0.191469, 0.527052, 1)
@@ -35,11 +36,13 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -160.0
-offset_right = 160.0
-offset_bottom = 80.0
+offset_left = -229.0
+offset_top = 13.0
+offset_right = 230.0
+offset_bottom = 93.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("2_untlf")
+theme_override_font_sizes/font_size = 45
 text = "Stats Upgrade UI"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -61,6 +64,7 @@ theme_override_colors/font_color = Color(0.808998, 0.808998, 0.808998, 1)
 theme_override_colors/font_hover_color = Color(0.991164, 0.991164, 0.991164, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("2_untlf")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_us8uv")
 theme_override_styles/hover = SubResource("StyleBoxFlat_cgfwh")
@@ -84,6 +88,7 @@ theme_override_colors/font_color = Color(0.808998, 0.808998, 0.808998, 1)
 theme_override_colors/font_hover_color = Color(0.991164, 0.991164, 0.991164, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("2_untlf")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_us8uv")
 theme_override_styles/hover = SubResource("StyleBoxFlat_cgfwh")

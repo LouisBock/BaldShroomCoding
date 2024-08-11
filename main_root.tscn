@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dk0otgnkq6jcw"]
+[gd_scene load_steps=32 format=3 uid="uid://dk0otgnkq6jcw"]
 
 [ext_resource type="Texture2D" uid="uid://bleevhkos63ci" path="res://Tilemaps/tileset chrome.png" id="2_3x4l2"]
 [ext_resource type="Texture2D" uid="uid://bpaxrvkwvxq2t" path="res://Sprites/Backgrounds/bg_bricks_01.png" id="2_ho3ba"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bmxw74cdaklk3" path="res://Sprites/Avatars/pepe dance.png" id="9_fohv1"]
 [ext_resource type="Script" path="res://Character Stats.gd" id="11_kadh6"]
 [ext_resource type="PackedScene" uid="uid://cif68w02k5umb" path="res://scenes/sc_Experience.tscn" id="12_4nigt"]
+[ext_resource type="FontFile" uid="uid://bfak45on8aoum" path="res://Fonts/slkscr.ttf" id="12_217vb"]
 [ext_resource type="Script" path="res://Coin Score.gd" id="12_uqt2y"]
 [ext_resource type="Script" path="res://scripts/SignalTestParent.gd" id="14_cgk0v"]
 [ext_resource type="Script" path="res://scripts/SignalTestChild.gd" id="14_pqlya"]
@@ -272,6 +273,7 @@ offset_top = -17.0
 offset_right = 161.0
 offset_bottom = 18.0
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("12_217vb")
 theme_override_font_sizes/font_size = 25
 text = "Coins: 0"
 horizontal_alignment = 1
@@ -327,10 +329,11 @@ expand_mode = 1
 texture_filter = 1
 layout_mode = 0
 offset_left = 75.0
-offset_top = 7.0
-offset_right = 226.0
-offset_bottom = 42.0
-scale = Vector2(0.95, 0.95)
+offset_top = 10.0
+offset_right = 267.0
+offset_bottom = 36.0
+scale = Vector2(0.9, 0.9)
+theme_override_fonts/font = ExtResource("12_217vb")
 theme_override_font_sizes/font_size = 25
 text = "Geldnascher"
 

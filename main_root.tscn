@@ -21,7 +21,8 @@
 background_mode = 3
 background_canvas_max_layer = 2
 glow_enabled = true
-glow_intensity = 1.65
+glow_normalized = true
+glow_intensity = 0.87
 glow_blend_mode = 1
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jxeop"]
@@ -184,12 +185,31 @@ position = Vector2(1103, 280)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("3_h58v5")
 
-[node name="Lantern" type="AnimatedSprite2D" parent="Scene Objects"]
-self_modulate = Color(2, 2, 2, 1)
-position = Vector2(670, 49)
+[node name="Lanterns node" type="Node" parent="Scene Objects"]
+
+[node name="Lantern" type="AnimatedSprite2D" parent="Scene Objects/Lanterns node"]
+self_modulate = Color(2.477, 0, 1, 0.531)
+position = Vector2(671, 50)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_j0dyr")
 autoplay = "default"
+frame_progress = 0.182644
+
+[node name="LanternColor Diff" type="AnimatedSprite2D" parent="Scene Objects/Lanterns node"]
+self_modulate = Color(0.650704, 0.349926, 0.488582, 1)
+position = Vector2(787, 49)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_j0dyr")
+autoplay = "default"
+frame_progress = 0.708314
+
+[node name="LanternColor Diff2" type="AnimatedSprite2D" parent="Scene Objects/Lanterns node"]
+self_modulate = Color(3, 2, 2, 1)
+position = Vector2(558, 50)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_j0dyr")
+autoplay = "default"
+frame_progress = 0.0923351
 
 [node name="Platforms move node" type="Node" parent="Scene Objects"]
 

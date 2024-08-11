@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dyth0pkkt6x2g"]
+[gd_scene load_steps=5 format=3 uid="uid://dyth0pkkt6x2g"]
 
 [ext_resource type="Script" path="res://scenes/Player Scene/sc_player.gd" id="1_01w3l"]
 [ext_resource type="Texture2D" uid="uid://dj1do1holgkef" path="res://Sprites/Player/robo char.png" id="1_3gf0l"]
+[ext_resource type="PackedScene" uid="uid://cvrnkaygnsxa8" path="res://scenes/sc_companion.tscn" id="3_l6x2a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_63fgp"]
 size = Vector2(22, 28.375)
@@ -17,3 +18,7 @@ texture = ExtResource("1_3gf0l")
 visible = false
 position = Vector2(0, 0.1875)
 shape = SubResource("RectangleShape2D_63fgp")
+
+[node name="Node2D" parent="." instance=ExtResource("3_l6x2a")]
+position = Vector2(-20, -19)
+scale = Vector2(0.33, 0.33)

@@ -33,6 +33,7 @@ animations = [{
 }]
 
 [node name="Node2D" type="Node2D"]
+modulate = Color(1, 2, 1.5, 1)
 script = ExtResource("1_antwj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

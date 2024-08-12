@@ -13,6 +13,10 @@ func _physics_process(delta):
 		avatar_coin_panel.visible = false
 		# Pause Game
 		get_tree().paused = true
+	
+	# r key for restart input
+	if Input.is_action_just_pressed("Restart"):
+		restart_game()
 
 # Future Options Menu
 
@@ -27,3 +31,7 @@ func unpause_game():
 	print("Game will be unpaused")
 	get_tree().paused = false
 	print("Game was unpaused")
+
+# Restart the game
+func restart_game():
+	get_tree().reload_current_scene()

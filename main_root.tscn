@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dk0otgnkq6jcw"]
+[gd_scene load_steps=35 format=3 uid="uid://dk0otgnkq6jcw"]
 
 [ext_resource type="Texture2D" uid="uid://bleevhkos63ci" path="res://Tilemaps/tileset chrome.png" id="2_3x4l2"]
 [ext_resource type="Texture2D" uid="uid://bpaxrvkwvxq2t" path="res://Sprites/Backgrounds/bg_bricks_01.png" id="2_ho3ba"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" path="res://scripts/SignalTestParent.gd" id="14_cgk0v"]
 [ext_resource type="Script" path="res://scripts/SignalTestChild.gd" id="14_pqlya"]
 [ext_resource type="PackedScene" uid="uid://dslvdqsm3xlu7" path="res://scenes/stat_interface.tscn" id="15_4l5mh"]
+[ext_resource type="Script" path="res://XP_Bar.gd" id="15_cwkn6"]
 [ext_resource type="Script" path="res://Game_Paused_UI.gd" id="16_53str"]
 [ext_resource type="Texture2D" uid="uid://ddh48y5oe2koq" path="res://Sprites/Animations/lantern_animation.png" id="16_vvhxk"]
 
@@ -346,7 +347,8 @@ theme_override_fonts/font = ExtResource("12_217vb")
 theme_override_font_sizes/font_size = 25
 text = "Geldnascher"
 
-[node name="ProgressBar" type="ProgressBar" parent="Scene Objects/UI/Avatar_Coins/Avatar_Coin_Panel/PlayerInfoBox"]
+[node name="XP_Bar" type="ProgressBar" parent="Scene Objects/UI/Avatar_Coins/Avatar_Coin_Panel/PlayerInfoBox"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -365,7 +367,9 @@ theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 17
 theme_override_styles/background = SubResource("StyleBoxFlat_yrgeb")
 theme_override_styles/fill = SubResource("StyleBoxFlat_citjg")
-value = 25.0
+max_value = 20.0
+value = 10.0
+script = ExtResource("15_cwkn6")
 
 [node name="Stat_Interface" type="Node" parent="Scene Objects/UI"]
 
@@ -408,6 +412,12 @@ text = "Pause TEST"
 
 [node name="TEST_ExperienceOrb" parent="." instance=ExtResource("12_4nigt")]
 position = Vector2(49, 243)
+
+[node name="TEST_ExperienceOrb2" parent="." instance=ExtResource("12_4nigt")]
+position = Vector2(1590, 306)
+
+[node name="TEST_ExperienceOrb3" parent="." instance=ExtResource("12_4nigt")]
+position = Vector2(1226, 288)
 
 [node name="SignalTestParent" type="Node2D" parent="."]
 script = ExtResource("14_cgk0v")

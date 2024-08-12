@@ -20,5 +20,11 @@ position = Vector2(0, 0.1875)
 shape = SubResource("RectangleShape2D_63fgp")
 
 [node name="Node2D" parent="." instance=ExtResource("3_l6x2a")]
-position = Vector2(-20, -19)
+position = Vector2(-30, -20)
 scale = Vector2(0.33, 0.33)
+
+[node name="AnimatedSprite2D" parent="Node2D" index="0"]
+position = Vector2(8.35627, 0)
+frame_progress = 0.794154
+
+[editable path="Node2D"]

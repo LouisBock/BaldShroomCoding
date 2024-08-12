@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cvrnkaygnsxa8"]
+[gd_scene load_steps=9 format=3 uid="uid://cvrnkaygnsxa8"]
 
 [ext_resource type="Script" path="res://scenes/sc_companion.gd" id="1_antwj"]
 [ext_resource type="Texture2D" uid="uid://csfkp7uj22rc" path="res://Sprites/Animations/fly_sheet.png" id="2_yp63o"]
@@ -32,13 +32,43 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="Animation" id="Animation_gwynf"]
+resource_name = "idle"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(24.368, 30), Vector2(50, 0), Vector2(40.305, -30), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lx80i"]
+_data = {
+"idle": SubResource("Animation_gwynf")
+}
+
+[node name="Aeri" type="Node2D"]
 modulate = Color(1, 2, 1.5, 1)
+scale = Vector2(3, 3)
 script = ExtResource("1_antwj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(4, 4)
+position = Vector2(1.69157, 2.08253)
+scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_5yiyl")
 autoplay = "default"
-frame = 2
-frame_progress = 0.131577
+frame_progress = 0.270739
+
+[node name="animAeri" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_lx80i")
+}
+autoplay = "idle"
+speed_scale = 1.5

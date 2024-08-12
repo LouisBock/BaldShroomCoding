@@ -54,7 +54,7 @@ func _process(delta):
 	
 
 # Funktionen, um Aeri wieder auf die Ursprungsposition zurück zu führen
-# Hier actual path zurück implementieren
+# To Do: Hier actual path zurück implementieren
 func move_back_left():
 	if self.position.x != 15:
 		self.position.x = 15

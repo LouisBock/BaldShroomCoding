@@ -6,8 +6,8 @@ extends Node
 
 # Stat Upgrade UI
 
-func HealthUp():
-	max_health += 10
+func HealthUp(health):
+	max_health += health
 
 func add_experience():
 	experience += 10

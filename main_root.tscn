@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dk0otgnkq6jcw"]
+[gd_scene load_steps=34 format=3 uid="uid://dk0otgnkq6jcw"]
 
 [ext_resource type="Texture2D" uid="uid://bleevhkos63ci" path="res://Tilemaps/tileset chrome.png" id="2_3x4l2"]
 [ext_resource type="Texture2D" uid="uid://bpaxrvkwvxq2t" path="res://Sprites/Backgrounds/bg_bricks_01.png" id="2_ho3ba"]
@@ -16,6 +16,8 @@
 [ext_resource type="Script" path="res://scripts/Coin Score.gd" id="12_uqt2y"]
 [ext_resource type="Script" path="res://scripts/SignalTestParent.gd" id="14_cgk0v"]
 [ext_resource type="Script" path="res://scripts/SignalTestChild.gd" id="14_pqlya"]
+[ext_resource type="PackedScene" uid="uid://dslvdqsm3xlu7" path="res://scenes/stat_interface.tscn" id="15_4l5mh"]
+[ext_resource type="Script" path="res://Game_Paused_UI.gd" id="16_53str"]
 [ext_resource type="Texture2D" uid="uid://ddh48y5oe2koq" path="res://Sprites/Animations/lantern_animation.png" id="16_vvhxk"]
 
 [sub_resource type="Environment" id="Environment_o85e3"]
@@ -148,6 +150,7 @@ corner_radius_bottom_left = 6
 environment = SubResource("Environment_o85e3")
 
 [node name="Game Manager" type="Node" parent="."]
+unique_name_in_owner = true
 script = ExtResource("8_07xqc")
 
 [node name="Stats" type="Node" parent="."]
@@ -255,7 +258,12 @@ rotation_smoothing_speed = 2.0
 
 [node name="UI" type="CanvasLayer" parent="Scene Objects"]
 
-[node name="Panel" type="Panel" parent="Scene Objects/UI"]
+[node name="Avatar_Coins" type="Node" parent="Scene Objects/UI"]
+
+[node name="Avatar_Coin_Panel" type="Node2D" parent="Scene Objects/UI/Avatar_Coins"]
+unique_name_in_owner = true
+
+[node name="Panel" type="Panel" parent="Scene Objects/UI/Avatar_Coins/Avatar_Coin_Panel"]
 offset_left = 251.0
 offset_right = 500.0
 offset_bottom = 47.0
@@ -263,7 +271,7 @@ scale = Vector2(0.95, 0.95)
 theme_override_styles/panel = SubResource("StyleBoxFlat_mmked")
 metadata/_edit_use_anchors_ = true
 
-[node name="ScoreLabel" type="Label" parent="Scene Objects/UI/Panel"]
+[node name="ScoreLabel" type="Label" parent="Scene Objects/UI/Avatar_Coins/Avatar_Coin_Panel/Panel"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 4
@@ -280,7 +288,7 @@ text = "Coins: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Scene Objects/UI/Panel"]
+[node name="TextureRect" type="TextureRect" parent="Scene Objects/UI/Avatar_Coins/Avatar_Coin_Panel/Panel"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -292,13 +300,13 @@ offset_bottom = 20.368
 grow_vertical = 2
 texture = ExtResource("9_em4cv")
 
-[node name="PlayerInfoBox" type="Panel" parent="Scene Objects/UI"]
+[node name="PlayerInfoBox" type="Panel" parent="Scene Objects/UI/Avatar_Coins/Avatar_Coin_Panel"]
 offset_right = 250.0
 offset_bottom = 75.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_17qfi")
 metadata/_edit_use_anchors_ = true
 
-[node name="AvatarFrame" type="Panel" parent="Scene Objects/UI/PlayerInfoBox"]
+[node name="AvatarFrame" type="Panel" parent="Scene Objects/UI/Avatar_Coins/Avatar_Coin_Panel/PlayerInfoBox"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -310,7 +318,7 @@ offset_bottom = 27.5
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_iobcf")
 
-[node name="Avatar" type="TextureRect" parent="Scene Objects/UI/PlayerInfoBox/AvatarFrame"]
+[node name="Avatar" type="TextureRect" parent="Scene Objects/UI/Avatar_Coins/Avatar_Coin_Panel/PlayerInfoBox/AvatarFrame"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -326,7 +334,7 @@ grow_vertical = 2
 texture = ExtResource("9_fohv1")
 expand_mode = 1
 
-[node name="Username" type="Label" parent="Scene Objects/UI/PlayerInfoBox"]
+[node name="Username" type="Label" parent="Scene Objects/UI/Avatar_Coins/Avatar_Coin_Panel/PlayerInfoBox"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 75.0
@@ -338,7 +346,7 @@ theme_override_fonts/font = ExtResource("12_217vb")
 theme_override_font_sizes/font_size = 25
 text = "Geldnascher"
 
-[node name="ProgressBar" type="ProgressBar" parent="Scene Objects/UI/PlayerInfoBox"]
+[node name="ProgressBar" type="ProgressBar" parent="Scene Objects/UI/Avatar_Coins/Avatar_Coin_Panel/PlayerInfoBox"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -358,6 +366,45 @@ theme_override_font_sizes/font_size = 17
 theme_override_styles/background = SubResource("StyleBoxFlat_yrgeb")
 theme_override_styles/fill = SubResource("StyleBoxFlat_citjg")
 value = 25.0
+
+[node name="Stat_Interface" type="Node" parent="Scene Objects/UI"]
+
+[node name="Stat Interface" parent="Scene Objects/UI/Stat_Interface" instance=ExtResource("15_4l5mh")]
+unique_name_in_owner = true
+process_mode = 3
+visible = false
+
+[node name="Game_Paused_Menu" type="Node" parent="Scene Objects/UI"]
+
+[node name="Game_Paused_UI" type="Control" parent="Scene Objects/UI/Game_Paused_Menu"]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 60.0
+offset_right = 20.0
+offset_bottom = 100.0
+grow_horizontal = 2
+script = ExtResource("16_53str")
+
+[node name="lb_pause_test" type="Label" parent="Scene Objects/UI/Game_Paused_Menu/Game_Paused_UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -107.5
+offset_top = -27.5
+offset_right = 107.5
+offset_bottom = 27.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Pause TEST"
 
 [node name="TEST_ExperienceOrb" parent="." instance=ExtResource("12_4nigt")]
 position = Vector2(49, 243)

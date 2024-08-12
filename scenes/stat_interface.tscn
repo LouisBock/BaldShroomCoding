@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dslvdqsm3xlu7"]
+[gd_scene load_steps=7 format=3 uid="uid://dslvdqsm3xlu7"]
 
 [ext_resource type="Script" path="res://scenes/stat_interface.gd" id="1_ona0j"]
 [ext_resource type="FontFile" uid="uid://bfak45on8aoum" path="res://Fonts/slkscr.ttf" id="2_untlf"]
+[ext_resource type="Script" path="res://scenes/lb_stats.gd" id="3_2ftpc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_us8uv"]
 bg_color = Color(0.298989, 0.191469, 0.527052, 1)
@@ -46,6 +47,27 @@ theme_override_font_sizes/font_size = 45
 text = "Stats Upgrade UI"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="lb_stats_title" type="Label" parent="."]
+layout_mode = 1
+offset_left = 20.0
+offset_top = 80.0
+offset_right = 369.0
+offset_bottom = 117.0
+theme_override_fonts/font = ExtResource("2_untlf")
+theme_override_font_sizes/font_size = 35
+text = "Stats:"
+
+[node name="lb_stats" type="Label" parent="."]
+layout_mode = 1
+offset_left = 30.0
+offset_top = 120.0
+offset_right = 379.0
+offset_bottom = 148.0
+theme_override_fonts/font = ExtResource("2_untlf")
+theme_override_font_sizes/font_size = 25
+text = "Max Health: "
+script = ExtResource("3_2ftpc")
 
 [node name="Resume" type="Button" parent="."]
 layout_mode = 1
@@ -95,5 +117,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_cgfwh")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7awuo")
 text = "Upgrade Health"
 
+[connection signal="visibility_changed" from="lb_stats" to="lb_stats" method="_on_visibility_changed"]
 [connection signal="pressed" from="Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="UpgradeHealth" to="." method="_on_upgrade_health_pressed"]
+[connection signal="pressed" from="UpgradeHealth" to="lb_stats" method="_on_upgrade_health_pressed"]

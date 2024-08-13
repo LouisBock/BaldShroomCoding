@@ -22,15 +22,13 @@ func _physics_process(delta):
 
 # Pause Game
 func pause_game():
-	print("Game will be paused")
 	get_tree().paused = true
-	print("Game was paused")
+	print("(in game_manager) Game was paused")
 
 # Unpause Game
 func unpause_game():
-	print("Game will be unpaused")
 	get_tree().paused = false
-	print("Game was unpaused")
+	print("(in game_manager) Game was unpaused")
 
 # Restart the game
 func restart_game():

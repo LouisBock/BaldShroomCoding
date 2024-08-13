@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dslvdqsm3xlu7"]
+[gd_scene load_steps=9 format=3 uid="uid://dslvdqsm3xlu7"]
 
 [ext_resource type="Script" path="res://scenes/stat_interface.gd" id="1_ona0j"]
 [ext_resource type="Texture2D" uid="uid://c3pn6rgtiecgn" path="res://Sprites/Backgrounds/bg_soil_maybe.png" id="2_i2h6o"]
 [ext_resource type="FontFile" uid="uid://bfak45on8aoum" path="res://Fonts/slkscr.ttf" id="2_untlf"]
 [ext_resource type="Script" path="res://scenes/lb_stats.gd" id="3_2ftpc"]
+[ext_resource type="Script" path="res://scenes/lb_skillpoints.gd" id="5_tb151"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_us8uv"]
 bg_color = Color(0.298989, 0.191469, 0.527052, 1)
@@ -81,6 +82,7 @@ text = "Max Health: "
 script = ExtResource("3_2ftpc")
 
 [node name="lb_skillpoints" type="Label" parent="."]
+layout_mode = 0
 offset_left = 800.0
 offset_top = 120.0
 offset_right = 1149.0
@@ -88,6 +90,7 @@ offset_bottom = 157.0
 theme_override_fonts/font = ExtResource("2_untlf")
 theme_override_font_sizes/font_size = 25
 text = "Skillpoints: 0"
+script = ExtResource("5_tb151")
 
 [node name="Resume" type="Button" parent="."]
 layout_mode = 1
@@ -138,6 +141,8 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_7awuo")
 text = "Upgrade Health"
 
 [connection signal="visibility_changed" from="lb_stats" to="lb_stats" method="_on_visibility_changed"]
+[connection signal="visibility_changed" from="lb_skillpoints" to="lb_skillpoints" method="_on_visibility_changed"]
 [connection signal="pressed" from="Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="UpgradeHealth" to="." method="_on_upgrade_health_pressed"]
 [connection signal="pressed" from="UpgradeHealth" to="lb_stats" method="_on_upgrade_health_pressed"]
+[connection signal="pressed" from="UpgradeHealth" to="lb_skillpoints" method="_on_upgrade_health_pressed"]

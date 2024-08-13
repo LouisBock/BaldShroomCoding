@@ -9,14 +9,15 @@ func _ready():
 func update_bar():
 	# !! Value increased nicht über den max val
 	self.value = character_stats.experience
-	print("Current xp: " + str(self.value))
-	check_level()
+	print("(in xp_bar) Current xp: " + str(self.value) + "/" + str(self.max_value))
+	check_progress_bar()
 
-func check_level():
+# If progress bar at 100%; xp = 0 and xp needed *2
+func check_progress_bar():
 	if (self.value == self.max_value):
 		self.max_value = self.max_value * 2
-		print("Max value: " + str(max_value))
+		print("(in xp_bar) New max xp value: " + str(max_value))
 		character_stats.experience = 0
-		print(character_stats.experience)
 		self.value = 0
-		# To Do: Add level up + add skill point for level up
+		# Level up
+		character_stats.level_up()

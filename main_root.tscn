@@ -244,6 +244,38 @@ one_way_collision = true
 [node name="Coll_Coin" parent="Scene Objects/Coins node" instance=ExtResource("7_8r8kr")]
 position = Vector2(338, 194)
 
+[node name="Experience" type="Node" parent="Scene Objects"]
+
+[node name="TEST_ExperienceOrb" parent="Scene Objects/Experience" instance=ExtResource("12_4nigt")]
+position = Vector2(49, 243)
+
+[node name="TEST_ExperienceOrb2" parent="Scene Objects/Experience" instance=ExtResource("12_4nigt")]
+position = Vector2(1590, 306)
+
+[node name="TEST_ExperienceOrb3" parent="Scene Objects/Experience" instance=ExtResource("12_4nigt")]
+position = Vector2(1226, 288)
+
+[node name="ExperienceOrb" parent="Scene Objects/Experience" instance=ExtResource("12_4nigt")]
+position = Vector2(2274, 277)
+
+[node name="ExperienceOrb2" parent="Scene Objects/Experience" instance=ExtResource("12_4nigt")]
+position = Vector2(2185, 290)
+
+[node name="ExperienceOrb3" parent="Scene Objects/Experience" instance=ExtResource("12_4nigt")]
+position = Vector2(2113, 266)
+
+[node name="ExperienceOrb4" parent="Scene Objects/Experience" instance=ExtResource("12_4nigt")]
+position = Vector2(2369, 326)
+
+[node name="ExperienceOrb5" parent="Scene Objects/Experience" instance=ExtResource("12_4nigt")]
+position = Vector2(2411, 306)
+
+[node name="ExperienceOrb6" parent="Scene Objects/Experience" instance=ExtResource("12_4nigt")]
+position = Vector2(2483, 325)
+
+[node name="ExperienceOrb7" parent="Scene Objects/Experience" instance=ExtResource("12_4nigt")]
+position = Vector2(2453, 239)
+
 [node name="Player Root" type="Node" parent="Scene Objects"]
 
 [node name="Player" parent="Scene Objects/Player Root" instance=ExtResource("3_et7i2")]
@@ -410,17 +442,10 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 40
 text = "Pause TEST"
 
-[node name="TEST_ExperienceOrb" parent="." instance=ExtResource("12_4nigt")]
-position = Vector2(49, 243)
-
-[node name="TEST_ExperienceOrb2" parent="." instance=ExtResource("12_4nigt")]
-position = Vector2(1590, 306)
-
-[node name="TEST_ExperienceOrb3" parent="." instance=ExtResource("12_4nigt")]
-position = Vector2(1226, 288)
-
 [node name="SignalTestParent" type="Node2D" parent="."]
 script = ExtResource("14_cgk0v")
 
 [node name="SignalTestChild" type="Node2D" parent="SignalTestParent"]
 script = ExtResource("14_pqlya")
+
+[connection signal="visibility_changed" from="Scene Objects/UI/Stat_Interface/Stat Interface" to="Scene Objects/UI/Stat_Interface/Stat Interface" method="_on_visibility_changed"]

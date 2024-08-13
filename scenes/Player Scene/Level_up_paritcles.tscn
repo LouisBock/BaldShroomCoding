@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://be5xotm66ss8v"]
+
+[ext_resource type="Script" path="res://scenes/Player Scene/Level_Up_Particles.gd" id="1_cn7uf"]
+[ext_resource type="FontFile" uid="uid://bfak45on8aoum" path="res://Fonts/slkscr.ttf" id="2_t18vm"]
+
+[node name="LevelUpParitcles" type="Node2D"]
+z_index = 1
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 45
+speed_scale = 1.4
+explosiveness = 0.87
+randomness = 0.33
+lifetime_randomness = 0.21
+emission_shape = 1
+emission_sphere_radius = 38.75
+direction = Vector2(0, 0)
+gravity = Vector2(-100, -300)
+initial_velocity_min = 50.0
+initial_velocity_max = 200.0
+angular_velocity_max = 116.36
+orbit_velocity_min = -0.2
+orbit_velocity_max = -0.2
+linear_accel_max = 30.0
+damping_max = 1.435
+scale_amount_min = 10.0
+scale_amount_max = 10.0
+hue_variation_min = 1.0
+hue_variation_max = 1.0
+script = ExtResource("1_cn7uf")
+
+[node name="lb_level_up" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -150.0
+offset_right = 169.0
+offset_bottom = -119.0
+theme_override_fonts/font = ExtResource("2_t18vm")
+theme_override_font_sizes/font_size = 30
+text = "Level Up !!"
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="CPUParticles2D" method="_on_timer_timeout"]

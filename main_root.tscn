@@ -1,6 +1,7 @@
-[gd_scene load_steps=35 format=3 uid="uid://dk0otgnkq6jcw"]
+[gd_scene load_steps=36 format=3 uid="uid://dk0otgnkq6jcw"]
 
 [ext_resource type="Texture2D" uid="uid://bleevhkos63ci" path="res://Tilemaps/tileset chrome.png" id="2_3x4l2"]
+[ext_resource type="Script" path="res://Particle Manager.gd" id="2_g0fgm"]
 [ext_resource type="Texture2D" uid="uid://bpaxrvkwvxq2t" path="res://Sprites/Backgrounds/bg_bricks_01.png" id="2_ho3ba"]
 [ext_resource type="PackedScene" uid="uid://dyth0pkkt6x2g" path="res://scenes/Player Scene/sc_player.tscn" id="3_et7i2"]
 [ext_resource type="Texture2D" uid="uid://btr88cnyiobgt" path="res://glatz glatz.png" id="3_h58v5"]
@@ -154,6 +155,10 @@ environment = SubResource("Environment_o85e3")
 unique_name_in_owner = true
 script = ExtResource("8_07xqc")
 
+[node name="Particle Manager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_g0fgm")
+
 [node name="Stats" type="Node" parent="."]
 
 [node name="Character Stats" type="Node" parent="Stats"]
@@ -235,6 +240,18 @@ texture = ExtResource("5_jwf81")
 [node name="StaticBody2D" type="StaticBody2D" parent="Scene Objects/Platform up node/sp_platform up"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Scene Objects/Platform up node/sp_platform up/StaticBody2D"]
+visible = false
+shape = SubResource("RectangleShape2D_u151i")
+one_way_collision = true
+
+[node name="sp_platform up2" type="Sprite2D" parent="Scene Objects/Platform up node"]
+position = Vector2(-232, 216)
+scale = Vector2(20, 4)
+texture = ExtResource("5_jwf81")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Scene Objects/Platform up node/sp_platform up2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scene Objects/Platform up node/sp_platform up2/StaticBody2D"]
 visible = false
 shape = SubResource("RectangleShape2D_u151i")
 one_way_collision = true

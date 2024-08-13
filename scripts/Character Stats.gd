@@ -1,4 +1,5 @@
 extends Node
+@onready var particle_manager = %"Particle Manager"
 
 # Character Stats
 @export var player_level = 1
@@ -22,3 +23,5 @@ func level_up():
 	# Gives one skillpoint upon levelling up
 	skillpoints += 1
 	print("(in character stats) New player lvl: " + str(player_level) + "\n(in character stats) Current Skillpoints: " + str(skillpoints))
+	# Creates particle at player
+	particle_manager.Level_Up_Particles()

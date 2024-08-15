@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bilqmxmx137f6"]
+
+[ext_resource type="Texture2D" uid="uid://dxjnblshpkfbn" path="res://Sprites/Collectibles/coin.png" id="1_2gsf2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4hy4k"]
+
+[node name="hook_anchor" type="RigidBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4hy4k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_2gsf2")

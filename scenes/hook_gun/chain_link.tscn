@@ -8,6 +8,7 @@ size = Vector2(5.33333, 8)
 [node name="chain_link" type="RigidBody2D"]
 collision_layer = 0
 collision_mask = 0
+mass = 0.01
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(4.76837e-07, 0)

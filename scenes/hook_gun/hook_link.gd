@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-@export var speed = 10
+@export var speed = 1
 var target_pos = null
 
 func _ready():
@@ -10,7 +10,7 @@ func _ready():
 func _physics_process(delta):
 	target_pos = get_global_mouse_position()
 	var direction = (target_pos - position).normalized()
-	
+	#TODO adjust to chain weight
 	linear_velocity = direction * (target_pos - position).length() * speed
 	#look_at(target_pos)
 	

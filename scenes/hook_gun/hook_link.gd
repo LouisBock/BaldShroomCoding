@@ -4,7 +4,7 @@ extends RigidBody2D
 var target_pos = null
 
 func _ready():
-	gravity_scale = 0
+	#gravity_scale = 1
 	pass # Replace with function body.
 
 

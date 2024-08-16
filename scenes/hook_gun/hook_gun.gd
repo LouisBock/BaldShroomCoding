@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var max_chain_links = 20
+@export var max_chain_links = 25
 @export var connection_depth = 0.8
 
 var chain_link_prefab = preload("res://scenes/hook_gun/chain_link.tscn")

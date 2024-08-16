@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://62jccaaro4pq"]
+[gd_scene load_steps=4 format=3 uid="uid://62jccaaro4pq"]
 
+[ext_resource type="Script" path="res://scenes/hook_gun/hook_link.gd" id="1_enwto"]
 [ext_resource type="Texture2D" uid="uid://buxhm7xmmx8pc" path="res://Sprites/Weapons/hook_gun/hook_link.png" id="1_p4lv3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mmhfa"]
@@ -7,6 +8,8 @@ size = Vector2(32, 16)
 
 [node name="hook_link" type="RigidBody2D"]
 collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_enwto")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_mmhfa")

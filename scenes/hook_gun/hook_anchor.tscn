@@ -1,13 +1,16 @@
 [gd_scene load_steps=3 format=3 uid="uid://bilqmxmx137f6"]
 
-[ext_resource type="Texture2D" uid="uid://dxjnblshpkfbn" path="res://Sprites/Collectibles/coin.png" id="1_2gsf2"]
+[ext_resource type="Texture2D" uid="uid://cg7ge3406k1dq" path="res://Sprites/Weapons/hook_gun/hook_anchor.png" id="1_fcy7p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4hy4k"]
+size = Vector2(48, 48)
 
-[node name="hook_anchor" type="RigidBody2D"]
+[node name="hook_anchor" type="StaticBody2D"]
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_4hy4k")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_2gsf2")
+scale = Vector2(3, 3)
+texture = ExtResource("1_fcy7p")

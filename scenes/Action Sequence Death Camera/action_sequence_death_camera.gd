@@ -1,9 +1,10 @@
 extends Node2D
 
 @export var player: Node2D 
+@export var speed = 200
 @onready var area = $Area2D
 @onready var cam = $Area2D/Camera2D
-var speed = 200
+
 
 func _ready():
 	cam.position.x = cam.get_viewport().size[0]*0.5

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwqd68uwcxqmx"]
+
+[ext_resource type="Texture2D" uid="uid://5qc8fyjyhfio" path="res://Sprites/Weapons/hook_gun/chain_segment.png" id="1_sja3r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_io67h"]
+size = Vector2(5.33333, 8)
+
+[node name="chain_link" type="RigidBody2D"]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4.76837e-07, 0)
+scale = Vector2(3, 1)
+shape = SubResource("RectangleShape2D_io67h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_sja3r")

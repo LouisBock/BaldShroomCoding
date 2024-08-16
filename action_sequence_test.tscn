@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://oodft4nyw0bs"]
+[gd_scene load_steps=9 format=3 uid="uid://oodft4nyw0bs"]
 
 [ext_resource type="Texture2D" uid="uid://bleevhkos63ci" path="res://Tilemaps/tileset chrome.png" id="1_4a5pr"]
 [ext_resource type="PackedScene" uid="uid://dyth0pkkt6x2g" path="res://scenes/Player Scene/sc_player.tscn" id="2_p45ww"]
 [ext_resource type="PackedScene" uid="uid://yu15wu2ee0kv" path="res://scenes/Action Sequence Death Camera/action_sequence_death_camera.tscn" id="3_6opub"]
+[ext_resource type="PackedScene" uid="uid://bilqmxmx137f6" path="res://scenes/hook_gun/hook_anchor.tscn" id="4_guii4"]
+[ext_resource type="PackedScene" uid="uid://cwqd68uwcxqmx" path="res://scenes/hook_gun/chain_link.tscn" id="5_tv58h"]
+[ext_resource type="PackedScene" uid="uid://62jccaaro4pq" path="res://scenes/hook_gun/hook.tscn" id="6_jr2c1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jxeop"]
 texture = ExtResource("1_4a5pr")
@@ -44,3 +47,41 @@ scale = Vector2(3, 3)
 [node name="action_sequence_death_camera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_6opub")]
 position = Vector2(0, 248)
 player = NodePath("../Player")
+speed = 50
+
+[node name="chain_tests" type="Node" parent="."]
+
+[node name="hook_anchor" parent="chain_tests" instance=ExtResource("4_guii4")]
+position = Vector2(758, 132)
+
+[node name="chain_link" parent="chain_tests" instance=ExtResource("5_tv58h")]
+position = Vector2(764, 132)
+
+[node name="chain_link2" parent="chain_tests" instance=ExtResource("5_tv58h")]
+position = Vector2(775, 132)
+
+[node name="chain_link3" parent="chain_tests" instance=ExtResource("5_tv58h")]
+position = Vector2(786, 132)
+
+[node name="PinJoint2D" type="PinJoint2D" parent="chain_tests"]
+position = Vector2(758, 132)
+node_a = NodePath("../hook_anchor")
+node_b = NodePath("../chain_link")
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="chain_tests"]
+position = Vector2(770, 132)
+node_a = NodePath("../chain_link")
+node_b = NodePath("../chain_link2")
+
+[node name="PinJoint2D3" type="PinJoint2D" parent="chain_tests"]
+position = Vector2(781, 132)
+node_a = NodePath("../chain_link2")
+node_b = NodePath("../chain_link3")
+
+[node name="PinJoint2D4" type="PinJoint2D" parent="chain_tests"]
+position = Vector2(792, 132)
+node_a = NodePath("../chain_link3")
+node_b = NodePath("../hook")
+
+[node name="hook" parent="chain_tests" instance=ExtResource("6_jr2c1")]
+position = Vector2(803, 132)

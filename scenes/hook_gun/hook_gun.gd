@@ -14,6 +14,8 @@ var pin_joints: Array[PinJoint2D] = []
 var active: bool = false
 var hook_link = null
 
+var fun: bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var temporary_chain_link = chain_link_prefab.instantiate()
@@ -31,6 +33,14 @@ func _physics_process(delta):
 		if (links.back().position - position).length() > chain_link_length:
 			instantiate_next_link()
 	
+	if Input.is_action_just_pressed("fun"):
+		fun = not fun
+		if fun:
+			max_chain_links += 2000
+		else:
+			max_chain_links -= 2000
+		
+	
 	if Input.is_action_just_pressed("hook"):
 		if active:
 			for l in links:
@@ -41,6 +51,8 @@ func _physics_process(delta):
 		else:
 			hook_link = hook_link_prefab.instantiate()	
 			hook_link.position = position + hook_gun_length * (get_global_mouse_position() - position).normalized()
+			if fun:
+				hook_link.gravity_scale = 0
 			get_parent().add_child(hook_link)
 			links.append(hook_link)
 		active = not active
@@ -54,6 +66,8 @@ func instantiate_next_link():
 	var joint_position = previous.position + 0.5 * connection_depth * chain_link_length * direction_to_gun
 	next_link.position = previous.position + connection_depth * chain_link_length * direction_to_gun
 	next_link.rotation = tanh((direction_to_gun * -1).y / (direction_to_gun * -1).x)
+	if fun:
+		next_link.gravity_scale = 0
 	get_parent().add_child(next_link)
 	
 	var joint = PinJoint2D.new()

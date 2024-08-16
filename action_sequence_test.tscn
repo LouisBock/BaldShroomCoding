@@ -47,7 +47,7 @@ scale = Vector2(3, 3)
 [node name="action_sequence_death_camera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_6opub")]
 position = Vector2(0, 248)
 player = NodePath("../Player")
-speed = 25
+speed = 15
 
 [node name="chain_tests" type="Node" parent="."]
 

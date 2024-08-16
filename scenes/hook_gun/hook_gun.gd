@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var max_chain_links = 20
+@export var connection_depth = 0.8
 
 var chain_link_prefab = preload("res://scenes/hook_gun/chain_link.tscn")
 var hook_link_prefab = preload("res://scenes/hook_gun/hook_link.tscn")
@@ -21,12 +22,13 @@ func _ready():
 	hook_gun_length = get_node("Sprite2D").texture.get_size().x * get_node("Sprite2D").scale.x
 	remove_child(temporary_chain_link)
 	temporary_chain_link.queue_free()
+	
 
 func _physics_process(delta):
 	look_at(get_global_mouse_position())
 	
 	if active and links.size() < max_chain_links + 1:
-		if (links.back().position-position).length() > chain_link_length:
+		if (links.back().position - position).length() > chain_link_length:
 			instantiate_next_link()
 	
 	if Input.is_action_just_pressed("hook"):
@@ -46,14 +48,18 @@ func _physics_process(delta):
 
 func instantiate_next_link():
 	var next_link = chain_link_prefab.instantiate()
-	next_link.position = links.back().position + chain_link_length * (position - links.back().position).normalized()
-	
+	var previous = links.back()
+		
+	var direction_to_gun = (position - previous.position).normalized()
+	var joint_position = previous.position + 0.5 * connection_depth * chain_link_length * direction_to_gun
+	next_link.position = previous.position + connection_depth * chain_link_length * direction_to_gun
+	next_link.rotation = tanh((direction_to_gun * -1).y / (direction_to_gun * -1).x)
 	get_parent().add_child(next_link)
 	
 	var joint = PinJoint2D.new()
 	joint.set_node_a(next_link.get_path())
 	joint.set_node_b(links.back().get_path())
-	joint.position = next_link.position + (links.back().position - next_link.position)*0.5
+	joint.position = joint_position
 	pin_joints.append(joint)
 	get_parent().add_child(joint)
 	
